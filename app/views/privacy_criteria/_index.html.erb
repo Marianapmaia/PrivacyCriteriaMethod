@@ -1,0 +1,22 @@
+<table class = "table table-hover table-striped table-sm">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Requirement</th>
+      <th>Description</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @privacy_criteria.each do |privacy_criterium| %>
+      <tr>
+        <td><%= privacy_criterium.id_pc %></td>
+        <td><%= link_to privacy_criterium.requirement, privacy_criterium %></td>
+        <td><%= privacy_criterium.description %></td>
+        <td><a href = <%= edit_privacy_criterium_path(privacy_criterium)%>>Edit</a></td>
+        <td><%= link_to 'Delete', privacy_criterium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

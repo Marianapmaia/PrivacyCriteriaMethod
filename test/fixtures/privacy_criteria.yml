@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: one
+  name: MyString
+  id_pc: MyString
+  requirement: MyString
+  description: MyText
+  source: MyString
+  owner: MyString
+  rel_owner: MyString
+  processor: MyString
+  rel_processor: MyString
+  third: MyString
+  rel_third: MyString
+  privacy_preference: MyString
+  privacy_compliance: MyString
+
+two:
+  project: two
+  name: MyString
+  id_pc: MyString
+  requirement: MyString
+  description: MyText
+  source: MyString
+  owner: MyString
+  rel_owner: MyString
+  processor: MyString
+  rel_processor: MyString
+  third: MyString
+  rel_third: MyString
+  privacy_preference: MyString
+  privacy_compliance: MyString

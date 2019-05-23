@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  privacy_criterium: one
+  tipo: MyString
+  list: MyString
+  desc: MyText
+
+two:
+  privacy_criterium: two
+  tipo: MyString
+  list: MyString
+  desc: MyText

@@ -1,0 +1,38 @@
+<div class = "form-group">
+    <div class = "row">
+        <div class="col">
+            <center><br/>Potencial Vulnerability</center>
+             <textarea type = "text" 
+                id = <%= modelo + 'vul' %>
+                name = <%=modelo + '[vul]' %>
+                class = "form-control"
+                placeholder = "Ex.: Other user can access user's e-mail and password"></textarea>  
+        </div>
+        
+        <div class = "col-2">
+            <center><strong><br/>EXPLORED BY</strong></center>
+        </div>
+        
+        <div class="col">
+            <center><br/>Potencial Threat</center>
+            <textarea type = "text" 
+                id = <%= modelo + 'thread' %>
+                name = <%=modelo + '[thread]' %>
+                class = "form-control"
+                placeholder = "Ex.: Exposure of user's registration"></textarea>  
+        </div>
+    </div>
+    <div class = "row">
+        <div class="col">
+            </br>
+            <center><strong>CAUSE</strong><br/>Potencial Harm</center>
+           <textarea type = "text" 
+                id = <%= modelo + 'harm' %>
+                name = <%=modelo + '[harm]' %>
+                class = "form-control"
+                placeholder = "Ex.: Unrestricted access to all user information"></textarea>  
+        </div>
+    </div>
+</div>
+
+<center><i class="fas fa-dot-circle separador"></i></center>

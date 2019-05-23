@@ -1,0 +1,38 @@
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<div class = "center">
+    <h1>Privacy Criteria</h1>
+</div>
+
+
+<!-- Form -->
+<%= form_tag do %>
+
+    <!-- Basic Informations -->
+    <%= render 'home/form/basic_infos' %>
+    <hr/>
+    
+    <!-- Actors-->
+    <%= render 'home/form/actors_relationship' %>
+    <hr/>
+    
+    <!-- Personal Information -->
+    <%= render 'home/form/personal_information' %>
+    <hr/>
+    
+    <!-- Privacy Constraint -->
+    <%= render 'home/form/privacy_constraint' %>
+    <hr/>
+    
+    <!-- Privacy Risk Scenario -->
+    <%= render 'home/form/privacy_risk' %>
+    <hr/>
+    
+    <!-- Privacy Mechanisms -->
+    <%= render 'home/form/privacy_mec' %>
+    <hr/>
+    
+    <center><button class = "btn btn-warning my-4">Send</button></center>
+    <hr/>
+<% end %>
