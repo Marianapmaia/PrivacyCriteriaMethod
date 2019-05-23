@@ -1,0 +1,169 @@
+<p id="notice"><%= notice %></p>
+
+<center><h2>Privacy Criteria: <%= @privacy_criterium.id_pc%></h2></center>
+
+</br>
+<div class = "container">
+  <table class = "table table-bordered table-responsive table-sm borda">
+    <tr>
+      <td rowspan = "2" class = "cinza"><strong>ID </strong>(<%= @privacy_criterium.id_pc %>)</td>
+      <td rowspan = "2" colspan = "2" class = "cinza"><strong>Privacy Requirement: </strong><%= @privacy_criterium.requirement %></td>
+      <td colspan = "1" class = "cinza center"><strong>Source: </strong><%= @privacy_criterium.source %></td>
+    </tr>
+    <tr>
+      <td colspan = "2" class = "cinza center"><strong>Priority: </strong><%= @privacy_criterium.priority %></td>
+    </tr>
+    
+    <tr>
+      <td colspan = "3"><strong>Description: </strong><%= @privacy_criterium.description %></td>
+      <td colspan = "1" class = "cinza center"><strong>2 - Actors' Trust Relationship </br> (disclosure) </strong></td>
+    </tr>
+    
+    <tr>
+      <td rowspan = "3" class = "cinza center"><strong>1 - Actors</strong></td>
+      <td class = "cinza"><strong>Owner/Controler</strong></td>
+      <td><%= @privacy_criterium.owner %></td>
+      <td><%= @privacy_criterium.rel_owner %></td>
+    </tr>
+    
+    <tr>
+      <td class = "cinza"><strong>Processor</strong></td>
+      <td><%= @privacy_criterium.processor %></td>
+      <td><%= @privacy_criterium.rel_processor %></td>
+    </tr>
+    
+    <tr>
+      <td class = "cinza"><strong>Thrid Party</strong></td>
+      <td><%= @privacy_criterium.third %></td>
+      <td><%= @privacy_criterium.rel_third %></td>
+    </tr>
+    
+    <tr>
+      <td colspan = "3"></td>
+      <td class = "cinza"><strong>4 - The purpose of task context (use/retention)</strong></td>
+    </tr> 
+    
+    <tr>
+      <td class = "cinza center" rowspan = <%= personal_size(@list_pi) %>><strong>3 - Personal Information (collect)</strong></td>
+      <td class = "cinza" rowspan = <%= maior(1,tamanho(@list_pi, "PRIVATE")) %>>Private</td>
+      <% primeiro = true %>
+      <% @list_pi.each do |pi| %>
+          <% if pi.tipo == "PRIVATE" %>
+            <% if primeiro then%>
+              <td><%= pi.list %></td>
+              <td><%= pi.desc %></td>
+              <% primeiro = false %>
+            <% else %>
+              <tr>
+                <td><%= pi.list %></td>
+                <td><%= pi.desc %></td>
+              </tr>
+            <% end %>
+          <% end %>
+      <% end %>
+      <% if primeiro then %>
+        <td></td>
+        <td></td>
+      <% end %>
+    </tr>
+    
+    <tr>
+      <td class = "cinza" rowspan = <%= maior(1,tamanho(@list_pi, "PUBLIC")) %>>Public</td>
+      <% primeiro = true %>
+      <% @list_pi.each do |pi| %>
+          <% if pi.tipo == "PUBLIC" %>
+            <% if primeiro then%>
+              <td><%= pi.list %></td>
+              <td><%= pi.desc %></td>
+              <% primeiro = false %>
+            <% else %>
+              <tr>
+                <td><%= pi.list %></td>
+                <td><%= pi.desc %></td>
+              </tr>
+            <% end %>
+          <% end %>
+      <% end %>
+      <% if primeiro then %>
+        <td></td>
+        <td></td>
+      <% end %>
+    </tr>
+    
+    <tr>
+      <td class = "cinza" rowspan = <%= maior(1,tamanho(@list_pi, "SEMI")) %>>Semi-Public</td>
+      <% primeiro = true %>
+      <% @list_pi.each do |pi| %>
+          <% if pi.tipo == "SEMI" %>
+            <% if primeiro then%>
+              <td><%= pi.list %></td>
+              <td><%= pi.desc %></td>
+              <% primeiro = false %>
+            <% else %>
+              <tr>
+                <td><%= pi.list %></td>
+                <td><%= pi.desc %></td>
+              </tr>
+            <% end %>
+          <% end %>
+      <% end %>
+      <% if primeiro then %>
+        <td></td>
+        <td></td>
+      <% end %>
+    </tr>
+    
+    <tr>
+      <td rowspan = "2" class = "cinza center"><strong>5 - Privacy Constraint:</strong></td>
+      <td class = "cinza">Privacy Preference</td>
+      <td colspan = "2"><%= @privacy_criterium.privacy_preference %></td>
+    </tr>
+    
+    <tr> 
+      <td class = "cinza">Privacy Compliance/Policy</td>
+      <td colspan = "2"><%= @privacy_criterium.privacy_compliance %></td>
+    </tr>
+    
+    <tr>
+      <td class = "cinza center" rowspan = <%= maior(6,6 * @list_risk.size) %>><strong>6 - Privacy Risks Scenario</strong></td>
+    </tr>
+    
+    <% @list_risk.each do |pi| %>
+      <tr>
+        <td class = "cinza center">Potencial Vulnerability</td>
+        <td rowspan = "2" class = "center"><strong>EXPLORED BY</strong></td>
+        <td class = "cinza center">Potencial Threat</td>
+      </tr>
+      <tr>
+        <td><%= pi.vul %></td>
+        <td><%= pi.thread %></td>
+      </tr>
+      <tr><td colspan = "3" class = "center"><strong>CAUSE</strong></td></tr>
+      <tr><td colspan = "3" class = "cinza center">Potencial Harm</td></tr>
+      <tr><td colspan = "3" class = "center"><%= pi.harm %></td></tr>
+    <% end %>
+    
+    <tr>
+      <td class = "cinza center" rowspan = <%= maior(1,@list_mec.size)%>><strong>7 - Privacy Mechanisms</strong></td>
+    
+    <% primeiro = true %>
+    <% @list_mec.each do |pi| %>
+      <% if primeiro then%>
+        <td colspan = "3"><%= pi.mec %></td>
+        <% primeiro = false %>
+      <% else %>
+        <tr>
+            <td colspan = "3"><%= pi.mec %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    <% if primeiro then%>
+      <td colspan = "3"></td>
+    <% end %>
+    </tr>
+  </table>
+</div>
+
+<p>
+  <center><%= link_to 'Back to Project', project_path(@privacy_criterium.project_id) %></center>
+</p>

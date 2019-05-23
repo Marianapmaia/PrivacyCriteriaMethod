@@ -1,0 +1,464 @@
+<%= form_with(model: privacy_criterium, local: true) do |form| %>
+  <% if privacy_criterium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(privacy_criterium.errors.count, "error") %> prohibited this privacy_criterium from being saved:</h2>
+
+      <ul>
+      <% privacy_criterium.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @new %>
+    <%= form.hidden_field :project_id, :value => @project_id %>
+  <% end %>
+
+  <!-- 1. Basic Informations -->
+  <div class = "my-4">
+    <h3>1. Basic Informations</h3>
+    <small><a href = "#" data-toggle="modal" data-target="#modalBasicInfos">How can I fill this?</a></small>
+  </div>
+  
+  <div class = "form-group row">
+       <label for="inputID" class="col-sm-2 col-form-label">Project Name:</label>
+      <div class="col-sm-6">
+         <%= @project_name %>
+      </div>
+  </div>
+  
+  <!--<div class = "form-group row">-->
+  <!--     <label for="inputID" class="col-sm-2 col-form-label">Name:</label>-->
+  <!--    <div class="col-sm-6">-->
+  <!--       <= form.text_field :name , class: "form-control", placeholder: "Privacy Criteria Name"%> -->
+  <!--    </div>-->
+  <!--</div>-->
+  
+  <div class = "form-group row">
+       <label for="inputID" class="col-sm-2 col-form-label">ID:</label>
+      <div class="col-sm-3">
+         <%= form.text_field :id_pc, class: "form-control", placeholder: "Privacy Criteria Identifier" %>
+      </div>
+  </div>
+  
+  <div class = "form-group row">
+       <label for="inputID" class="col-sm-2 col-form-label">Privacy Requirement:</label>
+      <div class="col-sm-6">
+         <%= form.text_field :requirement, class: "form-control", placeholder: "Short requirement description" %>
+      </div>
+  </div>
+  
+  <div class = "form-group row">
+       <label for="inputID" class="col-sm-2 col-form-label">Description:</label>
+      <div class="col-sm-6">
+         <%= form.text_area :description, class: "form-control", placeholder: "Long requirement description" %>
+      </div>
+  </div>
+  
+  <div class = "form-group row">
+       <label for="inputID" class="col-sm-2 col-form-label">Source:</label>
+      <div class="col-sm-6">
+         <%= form.text_field :source, class: "form-control", placeholder: "Requirement Source. Ex: Client/Stakeholder" %>
+      </div>
+  </div>
+  
+  <div class = "form-group row">
+       <label for="inputID" class="col-sm-2 col-form-label">Priority:</label>
+      <div class="col-sm-3">
+         <%= form.text_field :priority, class: "form-control", placeholder: "Privacy Criteria Priority" %>
+      </div>
+  </div>
+  
+  <hr/>
+
+  <!-- 2. Actors-->
+  <div class = "my-4">
+    <h3>2. Actors and Trust Relationship</h3>
+    <small><a href = "#" data-toggle="modal" data-target="#modalTrust">How can I fill this?</a></small>
+  </div>
+  
+  <div class = "row bold">
+      <div class = "col-sm-8">
+          <center>Actors Name</center>
+      </div>
+      <div class = "col">
+          <center>Trust Relationship Actors (disclosure)</center>
+      </div>
+  </div>
+  
+  <div class = "form-group row my-2">
+       <label for="inputID" class="col-sm-2 col-form-label">Owner/Controller:</label>
+      <div class="col-sm-6">
+         <%= form.text_field :owner, class: "form-control", placeholder: "" %>
+      </div>
+      <div class="col-sm-4">
+          <%= form.text_field :rel_owner, class: "form-control", placeholder: "" %>
+      </div>
+  </div>
+  
+  <div class = "form-group row">
+       <label for="inputID" class="col-sm-2 col-form-label">Processor:</label>
+      <div class="col-sm-6">
+         <%= form.text_field :processor, class: "form-control", placeholder: "" %>
+      </div>
+      <div class="col-sm-4">
+         <%= form.text_field :rel_processor, class: "form-control", placeholder: "" %>
+      </div>
+  </div>
+  
+  <div class = "form-group row">
+       <label for="inputID" class="col-sm-2 col-form-label">Third Party:</label>
+      <div class="col-sm-6">
+         <%= form.text_field :third, class: "form-control", placeholder: "" %>
+       </div>
+       <div class="col-sm-4">
+         <%= form.text_field :rel_third, class: "form-control", placeholder: "" %>
+      </div>
+  </div>
+
+  <hr/>
+    
+  <!-- 3. Personal Information -->
+  <div class = "my-4">
+    <h3>3. Personal Information (Collect)</h3>
+    <small><a href = "#" data-toggle="modal" data-target="#modalPersonalInfo">How can I fill this?</a></small>
+  </div>
+  
+  
+  <!-- Private -->
+  <h5>Private</h5>
+  
+  <div id = "pip0"><%= render 'privacy_criteria/form/pip', modelo: "pip0" %></div>
+  <div id = "pip1" class = "hidden"><%= render 'privacy_criteria/form/pip', modelo: "pip1"%></div>
+  <div id = "pip2" class = "hidden"><%= render 'privacy_criteria/form/pip', modelo: "pip2"%></div>
+  <div id = "pip3" class = "hidden"><%= render 'privacy_criteria/form/pip', modelo: "pip3"%></div>
+  <div id = "pip4" class = "hidden"><%= render 'privacy_criteria/form/pip', modelo: "pip4"%></div>
+    
+  <center>
+    <button id = "btn_show_pip" type = "button" value = "Add" class = "btn btn-warning btn-sm" onClick= "show_pip()">Add</button>
+    <button id = "btn_remove_pip" type = "button" value = "Remove" class = "btn btn-danger btn-sm"  onClick= "remove_pip();" disabled>Remove</button>
+  </center>
+    
+  <hr />
+  
+  <!-- Public -->
+  <h5>Public</h5>
+  <div id = "pipu0"><%= render 'privacy_criteria/form/pipu', modelo: "pipu0"%></div>
+  <div id = "pipu1" class = "hidden"><%= render 'privacy_criteria/form/pipu', modelo: "pipu1"%></div>
+  <div id = "pipu2" class = "hidden"><%= render 'privacy_criteria/form/pipu', modelo: "pipu2"%></div>
+  <div id = "pipu3" class = "hidden"><%= render 'privacy_criteria/form/pipu', modelo: "pipu3"%></div>
+  <div id = "pipu4" class = "hidden"><%= render 'privacy_criteria/form/pipu', modelo: "pipu4"%></div>
+  
+  <center>
+    <button id = "btn_show_pipu" type = "button" value = "Add" class = "btn btn-warning btn-sm" onClick= "show_pipu()">Add</button>
+    <button id = "btn_remove_pipu" type = "button" value = "Remove" class = "btn btn-danger btn-sm"  onClick= "remove_pipu();" disabled>Remove</button>
+  </center>
+  
+  
+  <hr />
+  <!-- Semi-Public -->
+  <h5>Semi-Public</h5>
+  <div id = "pis0"><%= render 'privacy_criteria/form/pis', modelo: "pis0"%></div>
+  <div id = "pis1" class = "hidden"><%= render 'privacy_criteria/form/pis', modelo: "pis1"%></div>
+  <div id = "pis2" class = "hidden"><%= render 'privacy_criteria/form/pis', modelo: "pis2"%></div>
+  <div id = "pis3" class = "hidden"><%= render 'privacy_criteria/form/pis', modelo: "pis3"%></div>
+  <div id = "pis4" class = "hidden"><%= render 'privacy_criteria/form/pis', modelo: "pis4"%></div>
+  
+  <center>
+    <button id = "btn_show_pis" type = "button" value = "Add" class = "btn btn-warning btn-sm" onClick= "show_pis()">Add</button>
+    <button id = "btn_remove_pis" type = "button" value = "Remove" class = "btn btn-danger btn-sm"  onClick= "remove_pis();" disabled>Remove</button>
+  </center>
+  
+  <% if @list_pi != nil %>
+    <% @list_pi.each do |pi| %>
+      <%= javascript_tag do %>
+        var list = "<%=j pi.list %>"
+        var desc = "<%=j pi.desc %>"
+      <% end %>
+      <% if pi.tipo == "PRIVATE" %>
+        <%= javascript_tag do %>update_pip(list,desc)<% end %>
+      <% end %>
+      <% if pi.tipo == "PUBLIC" %>
+        <%= javascript_tag do %>update_pipu(list,desc)<% end %>
+      <% end %>
+      <% if pi.tipo == "SEMI" %>
+        <%= javascript_tag do %>update_pis(list,desc)<% end %>
+      <% end %>
+      
+    <% end %>
+  <% end %>
+  
+  <hr/>
+  
+  
+  <!-- 4. Privacy Constraint -->
+  <div class = "my-4">
+    <h3>4. Privacy Constraint</h3>
+    <small><a href = "#" data-toggle="modal" data-target="#modalConst">How can I fill this?</a></small>
+  </div>
+  
+  <div class = "form-group row">
+       <label for="inputID" class="col-sm-2 col-form-label">Privacy Preference</label>
+      <div class="col-sm">
+         <%= form.text_area :privacy_preference, class: "form-control", placeholder: "Describe the Privacy Preference" %>
+      </div>
+  </div>
+  
+  <div class = "form-group row">
+       <label for="inputID" class="col-sm-2 col-form-label">Privacy Compliance/Policy</label>
+      <div class="col-sm">
+         <%= form.text_area :privacy_compliance, class: "form-control", placeholder: "Describe the Privacy Compliance/Policy" %>
+      </div>
+  </div>
+  
+  <hr/>
+  
+  <!-- 5. Privacy Risk Scenario -->
+  
+  
+  <div class = "my-4">
+    <h3>5. Privacy Risk Scenario</h3>
+    <small><a href = "#" data-toggle="modal" data-target="#modalRisk">How can I fill this?</a></small>
+  </div>
+  
+  <div id = "risk0"><%= render 'privacy_criteria/form/privacy_risk', modelo: "risk0" %></div>
+  <div id = "risk1" class = "hidden"><%= render 'privacy_criteria/form/privacy_risk', modelo: "risk1" %></div>
+  <div id = "risk2" class = "hidden"><%= render 'privacy_criteria/form/privacy_risk', modelo: "risk2" %></div>
+  <div id = "risk3" class = "hidden"><%= render 'privacy_criteria/form/privacy_risk', modelo: "risk3" %></div>
+  <div id = "risk4" class = "hidden"><%= render 'privacy_criteria/form/privacy_risk', modelo: "risk4" %></div>
+  <div id = "risk5" class = "hidden"><%= render 'privacy_criteria/form/privacy_risk', modelo: "risk5" %></div>
+  <div id = "risk6" class = "hidden"><%= render 'privacy_criteria/form/privacy_risk', modelo: "risk6" %></div>
+  <div id = "risk7" class = "hidden"><%= render 'privacy_criteria/form/privacy_risk', modelo: "risk7" %></div>
+  <div id = "risk8" class = "hidden"><%= render 'privacy_criteria/form/privacy_risk', modelo: "risk8" %></div>
+  <div id = "risk9" class = "hidden"><%= render 'privacy_criteria/form/privacy_risk', modelo: "risk9" %></div>
+  
+  <center>
+    <button id = "btn_show_risk" type = "button" value = "Add" class = "btn btn-warning btn-sm" onClick= "show_risk()">Add</button>
+    <button id = "btn_remove_risk" type = "button" value = "Remove" class = "btn btn-danger btn-sm"  onClick= "remove_risk();" disabled>Remove</button>
+  </center>
+  
+  <% if @list_risk != nil %>
+    <% @list_risk.each do |risk| %>
+      <%= javascript_tag do %>
+        var vul = "<%=j risk.vul %>"
+        var thread = "<%=j risk.thread %>"
+        var harm = "<%=j risk.harm %>"
+        
+        update_risk(vul, thread, harm)
+      <% end %>
+    <% end %>
+  <% end %>
+  
+  <hr/>
+  
+  <!-- 6. Privacy Mec -->
+  <div class = "my-4">
+      <h3>6. Privacy Mechanisms</h3>
+      <small><a href = "#" data-toggle="modal" data-target="#modalMec">How can I fill this?</a></small>
+  </div>
+  
+  <div id = "mec0"><%= render 'privacy_criteria/form/privacy_mec', modelo: "mec0" %></div>
+  <div id = "mec1" class = "hidden"><%= render 'privacy_criteria/form/privacy_mec', modelo: "mec1" %></div>
+  <div id = "mec2" class = "hidden"><%= render 'privacy_criteria/form/privacy_mec', modelo: "mec2" %></div>
+  <div id = "mec3" class = "hidden"><%= render 'privacy_criteria/form/privacy_mec', modelo: "mec3" %></div>
+  <div id = "mec4" class = "hidden"><%= render 'privacy_criteria/form/privacy_mec', modelo: "mec4" %></div>
+  <div id = "mec5" class = "hidden"><%= render 'privacy_criteria/form/privacy_mec', modelo: "mec5" %></div>
+  <div id = "mec6" class = "hidden"><%= render 'privacy_criteria/form/privacy_mec', modelo: "mec6" %></div>
+  <div id = "mec7" class = "hidden"><%= render 'privacy_criteria/form/privacy_mec', modelo: "mec7" %></div>
+  <div id = "mec8" class = "hidden"><%= render 'privacy_criteria/form/privacy_mec', modelo: "mec8" %></div>
+  <div id = "mec9" class = "hidden"><%= render 'privacy_criteria/form/privacy_mec', modelo: "mec9" %></div>
+  
+  <% if @list_mec != nil %>
+    <% @list_mec.each do |mec| %>
+      <%= javascript_tag do %>
+        var mec = "<%=j mec.mec %>"
+        update_mec(mec)
+      <% end %>
+    <% end %>
+  <% end %>
+  
+  <center>
+    <button id = "btn_show_mec" type = "button" value = "Add" class = "btn btn-warning btn-sm" onClick= "show_mec()">Add</button>
+    <button id = "btn_remove_mec" type = "button" value = "Remove" class = "btn btn-danger btn-sm"  onClick= "remove_mec();" disabled>Remove</button>
+  </center>
+
+  <!-- END -->
+  
+  <div class="actions">
+    <center><button type = "submit" class = "btn btn-success my-4">Create Privacy Criteria</button></center>
+  </div>
+<% end %>
+
+
+
+<!-- Modal Basic Information-->
+
+<div class="modal fade" id="modalBasicInfos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">More information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style = "text-align: justify;">
+        Privacy requirement is one that involves the collect / use / retention / disclosure of personal data.<br/>
+        <a href = <%=catalog_path%> target = "_blank">To read more information click here.</a>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Actors Relationships -->
+
+<div class="modal fade" id="modalTrust" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">More information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style = "text-align: justify;">
+        - The names of the actors can be filled according to the role of the actors involved in a particular requirement:</br>
+        <ul>
+            <li><strong>Owner:</strong> Agent is the owner of his personal information/data;</li>
+            <li><strong>Third Party:</strong> Active components who receive personal information;</li>
+            <li><strong>Processor/ Manager:</strong> is the service entity responsible for delivery content (mostly data) and for user data restoration.</li>
+        </ul>
+        - The relationship of trust between the actors must be filled according to the confidence that the actor will have to disclose the personal data of a requirement. Ex: The owner has a trust relationship with the processor.
+<br/>
+        <a href = <%=catalog_path%> target = "_blank">To read more information click here.</a>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Personal Information-->
+
+<div class="modal fade" id="modalPersonalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">More information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style = "text-align: justify;">
+        Personal Information: It is relate to a living individual who can be identified from that information;</br>
+        <ul>
+            <li><strong>Private:</strong> Content or information is private;</li>
+            <li><strong>Public:</strong> Content or information is public;</li>
+            <li><strong>Semi-Public:</strong> It shares content and/or information with particular groups, or particular categories of users;</li>
+        </ul>
+        <br/>
+        <a href = <%=catalog_path%>>To read more information click here.</a>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Constraint -->
+
+<div class="modal fade" id="modalConst" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">More information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style = "text-align: justify;">
+        <ul>
+            <li><strong>Privacy Constraint Preference:</strong> is one that is related to the actors preferences involved in a requirement.</li>
+            <ul><li>Ex: Personal data cannot be passed on to third parties.</li></ul>
+            <li><strong>Privacy Constraint Compliance/Policy:</strong> is one that is related to the laws or business policies involved in a requirement.</li>
+            <ul><li>Ex: Medical data must be removed from databases.</li></ul>
+        </ul>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Risks -->
+
+<div class="modal fade" id="modalRisk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">More information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style = "text-align: justify;">
+        Inform Risk Scenario, that is, detail all "potential vulnerabilities" that can be exploited by "potential threats" and put together, should cause "Potential harm".</br>
+        <ul>
+            <li><strong>Vulnerability: </strong>Attacker or a malicious user might exploit fragility and get access (being exposed or attacked). <br/>Ex: Other user can access user’s personal information.</li>
+            <li><strong>Privacy Threats: </strong>Threats pose potential loss or indicate problems that can put the system at risk. <br/>Ex: Exposure of user's personal information.</li>
+            <li><strong>Harms: </strong>Associate with a threat. When privacy harm  occurs to an user. <br/>Ex: Unrestricted access to all user information.</li>
+        </ul>
+        <br/>
+        <a href = <%=catalog_path%> target = "_blank">To read more information click here.</a>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal mec-->
+
+<div class="modal fade" id="modalMec" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">More information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style = "text-align: justify;">
+        The privacy mechanism (s) that can be used to mitigate the identified risk scenario.<br/> Ex: Consent/Permission: It refers to get users consent about something;
+        <br/>
+        <br/>
+        <a href = <%=catalog_path%> target = "_blank">To read more information click here.</a>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

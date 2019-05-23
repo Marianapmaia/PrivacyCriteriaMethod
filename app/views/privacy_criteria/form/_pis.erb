@@ -1,0 +1,32 @@
+<div class = "form-group row my-2">
+    <label 
+    for="inputID" 
+    class="col-sm-2 col-form-label">
+        List the information:
+    </label>
+    
+    <div class="col-sm">
+        <input type = "text" 
+        id = <%= modelo + "list" %>
+        name = <%=modelo + '[list]' %>
+        class = "form-control" 
+        placeholder = "Semi-public information list" >  
+    </div>
+    
+</div>
+
+<div class = "form-group row my-2">
+    <label 
+    for="inputID" 
+    class="col-sm-2 col-form-label">
+        Describe the purpose of the task context:
+    </label>
+    <div class="col-sm">
+        <textarea
+        id = <%= modelo + 'desc' %>
+        name = <%= modelo + '[desc]' %>
+        class = "form-control"
+        placeholder = "Describe the purpose of semi-public personal information use or retention"></textarea>
+    </div>
+</div>
+<center><i class="fas fa-dot-circle separador"></i></center>

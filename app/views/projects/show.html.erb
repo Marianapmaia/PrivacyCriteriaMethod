@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h4>Project Information</h4>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Description:</strong></br>
+  <%= @project.description %>
+</p>
+
+<p>
+  <%= link_to 'Edit this Project', edit_project_path(@project) %>
+</p>
+
+<hr>
+
+<h4>Sharing Options</h4>
+<%= render 'share', project: @project.id %>
+
+<hr>
+
+<h4>Privacy Criterias</h4>
+<%= render 'privacy_criteria/index' %></br>
+<%= button_to 'New Privacy Criteria', new_privacy_criterium_path, params: {id: @project.id} , class: "btn btn-primary btn-sm", method: :get %>
+
+<p>
+  <%= link_to 'Back', projects_path %>
+</p>
