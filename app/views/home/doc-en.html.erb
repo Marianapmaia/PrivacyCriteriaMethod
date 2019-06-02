@@ -1,131 +1,91 @@
 <h1><center>Documentation</center></h1>
+<h2><center>Process</center></h2>
 
 <p dir="ltr" id="docs-internal-guid-e94d70b1-7fff-facf-b5b8-73767e5c2579">
-    Inglês
+
 </p>
 <p dir="ltr">
-    Privacy criteria aim to help software developers who use agile development
-    methodologies to think about privacy from the early stages of software
-    development, that is when they are eliciting and specifying system
-    requirements.
+   Privacy Criteria Method (PCM) aim to help software developers who use agile development methodologies to think about privacy from the early stages of software development, that is when they are specifying system requirements.
 </p>
 <p dir="ltr">
-    The process of specifying privacy requirements with the "Privacy Criteria"
-    follows the steps shown in the figure below.
+   The process of specifying privacy requirements with PCM follows the steps shown in the figure below.
 </p>
 <p dir="ltr">
-    <img
-        src="https://lh5.googleusercontent.com/848v_J1AkqAhSy1i9a3rkGPkUqkRh93vog0lZHxqrBkXDdc9NpVPXWLkfOIVxaIu9PBWz3YDoq1vH_kXUaZ8AhSPC3RiJCrdyl8wjaflIF5YVVUY4QKpSUthPczsgO8Ps6LtXNGxox2rqLf6AA"
-        width="567"
-        height="489"
-    />
+    <center>
+          <img
+             src="Processo-RE3.png"
+             width="567"
+             height="489"
+          />
+    </center>
 </p>
 <p dir="ltr">
-    The "Privacy Criteria" can be used in conjunction with any requirements
-    specification method, such as user stories that are widely used in agile
-    software development.
+    PCM can be used in conjunction with any requirements specification technique, such as user stories and acceptance criteria that are widely used in agile development. If the system to be specified involves the use, collection, retention, or disclosure of personal information, it is necessary to initiate the specification with PCM. Therefore, if this condition is confirmed, specification with PCM is required. Otherwise, specification is concluded. The activities of PCM are detailed as follows.
 </p>
+
 <ul>
+  
     <li dir="ltr">
         <p dir="ltr">
-            Initially, in "Specify Requirements" it is necessary to specify the
-            requirement with some method of specifying requirements.
-        </p>
-    </li>
-    <li dir="ltr">
-        <p dir="ltr">
-            After completing the requirement specification, the following
-            question should be asked: Involves collect/use/
-            retention/disclosure of personal data?
+            Basic Specification Information: 
         </p>
     </li>
     <ul>
         <li dir="ltr">
             <p dir="ltr">
-                If the answer is negative, the process is terminated.
+                ID (unique identifier of the privacy criteria); 
+
             </p>
         </li>
         <li dir="ltr">
             <p dir="ltr">
-                If the answer is positive, the process of specifying the
-                Privacy Criteria begins.
+                Privacy Requirement and its description (detailed description of the specified requirement);
+            </p>
+        </li>
+        <li dir="ltr">
+            <p dir="ltr">
+                Information Source (person responsible for the information); 
+            </p>
+        </li>
+        <li dir="ltr">
+            <p dir="ltr">
+                Priority (Low Critical; Regular; Critical; or Very Critical).
             </p>
         </li>
     </ul>
     <li dir="ltr">
         <p dir="ltr">
-            It should be "Specify ID", that is, the unique identifier of the
-            privacy criteria.
+            Actors Specification: actors involved in that specific requirement: Owner/Controller; Processor; and Third Party.
         </p>
     </li>
     <li dir="ltr">
         <p dir="ltr">
-            It should be "Specify Privacy Requirement", that is, the
-            requirement that was specified in another requirement specification
-            method.
+            Trust Relation of Actors Specification: the trust relationship between the actors about the specific requirement.
         </p>
     </li>
     <li dir="ltr">
         <p dir="ltr">
-            It should be "Specify Source", that is, the person responsible for
-            the information.
+            Personal Information Specification: all personal information related to the specific requirement. Each personal information should be classified in one of the following types: Private Information; Public Information; or Semi-Public Information.
+
         </p>
     </li>
     <li dir="ltr">
         <p dir="ltr">
-            It should be “Specify Priority" of development:
+           Purpose of Task Context Specification: the purpose of each personal information.
         </p>
     </li>
-    <ul>
-        <li dir="ltr">
-            <p dir="ltr">
-                Low Critical;
-            </p>
-        </li>
-        <li dir="ltr">
-            <p dir="ltr">
-                Regular;
-            </p>
-        </li>
-        <li dir="ltr">
-            <p dir="ltr">
-                Critical;
-            </p>
-        </li>
-        <li dir="ltr">
-            <p dir="ltr">
-                Very Critical.
-            </p>
-        </li>
-    </ul>
+    
     <li dir="ltr">
         <p dir="ltr">
-            It should be "Specify Description", that is, the detailed
-            description of the specified requirement.
+            Privacy Constraint Specification: the Privacy Preference; and Privacy Compliance/Policy.
         </p>
     </li>
     <li dir="ltr">
         <p dir="ltr">
-            It should be "Specify Actors" involved in that requirement:
+           Risk Scenario Specification: a risk scenario refers to the specification of potential vulnerabilities that can be exploited by potential threats and, together, should cause potential harm.
         </p>
     </li>
-    <ul>
-        <li dir="ltr">
-            <p dir="ltr">
-                Owner/Controller
-            </p>
-        </li>
-        <li dir="ltr">
-            <p dir="ltr">
-                Processor
-            </p>
-        </li>
-        <li dir="ltr">
-            <p dir="ltr">
-                Third Party
-            </p>
-        </li>
-    </ul>
+   
     <li dir="ltr">
         <p dir="ltr">
             It should be "Specify Trust Relation of Actors", that is, to inform
@@ -135,80 +95,53 @@
     </li>
     <li dir="ltr">
         <p dir="ltr">
-            It should be "Specify Personal Information", that is, submit all
-            personal information to the requirement. For each personal
-            information it is necessary to classify the personal information
-            in:
+            Privacy Mechanism(s) Specification: the mechanism that can be used to mitigate the identified risk scenario.
         </p>
-    </li>
-    <ul>
-        <li dir="ltr">
-            <p dir="ltr">
-                Private Information;
-            </p>
-        </li>
-        <li dir="ltr">
-            <p dir="ltr">
-                Public Information;
-            </p>
-        </li>
-        <li dir="ltr">
-            <p dir="ltr">
-                Semi-Public Information.
-            </p>
-        </li>
-    </ul>
-    <li dir="ltr">
-        <p dir="ltr">
-            It should be "Specify purpose of task context", that is, what is
-            the purpose of using or retaining personal information.
-        </p>
-    </li>
-    <li dir="ltr">
-        <p dir="ltr">
-            It should be "Specify Privacy Constraint":
-        </p>
-    </li>
-    <ul>
-        <li dir="ltr">
-            <p dir="ltr">
-                Privacy Preference
-            </p>
-        </li>
-        <li dir="ltr">
-            <p dir="ltr">
-                Privacy Compliance/Policy
-            </p>
-        </li>
-    </ul>
-    <li dir="ltr">
-        <p dir="ltr">
-            It should be "Specify Risk Scenario", that is, detail all
-            "potential vulnerabilities" that can be exploited by "potential
-            threats" and put together, should cause "Potential harm".
-        </p>
-    </li>
-    <li dir="ltr">
-        <p dir="ltr">
-            Finally, It should be "Specify Privacy Mechanism (s)" that can be
-            used to mitigate the identified risk scenario.
-        </p>
-    </li>
+    </li>    
+    
+   
+    
 </ul>
 <p dir="ltr">
-    The metamodel below presents the constructs and rules needed to build
-    privacy specification using the Privacy Criteria.
+    The metamodel below presents the constructs and rules needed to build privacy specification using PCM.
 </p>
 <p dir="ltr">
-    <img
-        src="https://lh5.googleusercontent.com/98u78zpkvQkv3Jqux7R9XY7qQdG6o-_Mjc7RNdklSkMjVIqFCS5tlZR7XXrmmqVWAY8D1nFcSs5lfIpd9_EMw-0QmPo2fHvVcqIzbmxph6DlvoGaCruU8h0eTwZUtcP2JYUiSBqVCl8Nerhxhw"
-        width="567"
-        height="323"
-    />
+   <center> 
+	<img
+        src="metamodelV5.png"
+        width="680"
+        height="400"
+        
+    	/>
+   </center>
 </p>
 <p dir="ltr">
-    See the privacy concepts catalog for a better understanding of the concepts
-    presented.
+    PCM has an identifier (ID) and a requirement description. It is defined by a Privacy Requirement, and can have one of four Priorities Types: Low Critical; Regular; Critical; and Very Critical. Each Privacy Requirement has at least one Stakeholder. 
+</p>
+
+</p>
+<p dir="ltr">
+    PCM has at least one Personal Information that can be: Public, Private or Semi-Public. PCM can have zero or more Privacy Constraints that can be: \ Privacy Preference and/or Privacy Compliance/Policy. PCM can have one or more Risk Scenarios which, in turn, has at least one Harm. A Vulnerability is exploited by a Thread and causes Harm. Finally, PCM has at least one Privacy Mechanism to mitigate a Risk Scenario.
+</p>
+
+
+</p>
+<p dir="ltr">
+    The Personal Information is protected by Privacy Mechanism and can be related with zero or more Privacy Constraints. It is restricted by a Purpose Context and has at least an Owner/Controller. Owner/Controller, Processor, and Third Party relate to each other.
+</p>
+</p>
+<p dir="ltr">
+    See the privacy concepts catalog or see the list of PCM attributes below for a better understanding of the concepts presented.
+</p>
+<p dir="ltr">
+   <center> 
+	<img
+        src="attributes.png"
+        width="380"
+        height="750"
+        
+    	/>
+   </center>
 </p>
 
 <!--_----->
